@@ -1012,7 +1012,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -1072,7 +1072,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(dragonfly_manager_create_job_total{namespace=~\"$namespace\"}[$interval]))by(name)",
+          "expr": "sum(rate(dragonfly_manager_create_job_total{namespace=~\"$namespace\"}[$interval])) by (name)",
           "instant": false,
           "interval": "60",
           "legendFormat": "__auto",
@@ -1140,7 +1140,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
@@ -1170,7 +1171,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(rate(dragonfly_manager_create_job_total{namespace=~\"$namespace\"}[$interval]))by(name) - \nsum(rate(dragonfly_manager_create_job_success_total{namespace=~\"$namespace\"}[$interval]))by(name) ",
+          "expr": "sum(rate(dragonfly_manager_create_job_total{namespace=~\"$namespace\"}[$interval])) by (name)\n-\nsum(rate(dragonfly_manager_create_job_success_total{namespace=~\"$namespace\"}[$interval])) by (name)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1402,7 +1403,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1526,7 +1528,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2238,6 +2241,6 @@
   "timezone": "",
   "title": "Manager",
   "uid": "TL-e3c9nz",
-  "version": 15,
+  "version": 17,
   "weekStart": ""
 }
